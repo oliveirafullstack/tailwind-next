@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,6 +17,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Tailwind-NextJs",
   description: "Curso de Tailwind CSS da Rocketseat",
+  icons: "",
 };
 
 export default function RootLayout({
@@ -28,7 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="grid-cols-app grid min-h-screen">
+          <Sidebar />
+          <main className="px-4 pb-12 pt-8">main</main>
+          {children}
+        </div>
       </body>
     </html>
   );
